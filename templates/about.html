@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+	About Page
+{% endblock title %}
+
+{% block content %}
+	<h1>About page here</h1>
+
+	<p>
+		{{ about_us|title|capfirst|striptags|slugify }}, {{ about_number }}, {{ about_list }}, {{ about_html|safe }}
+	</p>
+
+	<ul>
+		{% for item in about_list %}
+			{% if item == 30 %}
+				<li>{{ forloop.counter }} - {{ item|add:100 }}</li>
+			{% elif item == 10 %}
+				<li>"This range is out of loop"</li>
+			{% else %}
+				<li>{{ forloop.counter }} - {{ item }}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+
+{% endblock content %}
